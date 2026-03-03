@@ -4,11 +4,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شَفرة</title>
+    <meta name="description"
+        content="شَفرة — نشرة أسبوعية تفكّك الأفكار التي تشكّلنا. من علم النفس إلى التكنولوجيا إلى الفلسفة.">
+    <meta property="og:title" content="شَفرة — فك الشفرات الصامتة">
+    <meta property="og:description" content="نشرة أسبوعية تفكّك الأفكار التي تشكّلنا">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shafrh.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>شَفرة ا</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --burgundy: #733034;
+            --text-light: #FFFFFF;
+            --font-display: 'Amiri', 'Noto Naskh Arabic', Georgia, serif;
+            --font-body: 'Noto Naskh Arabic', Georgia, serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--black);
+            color: var(--text-light);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 24px;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            font-weight: 700;
+            letter-spacing: -1px;
+            animation: appear 0.8s ease 0.2s both;
+        }
+
+        .hero-desc {
+            max-width: 440px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1.1rem;
+            line-height: 2;
+            margin: 24px auto 48px;
+            animation: appear 0.8s ease 0.4s both;
+        }
+
+        .hero-form {
+            animation: appear 0.8s ease 0.6s both;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .form-input:focus {
+            border-color: var(--burgundy);
+        }
+
+        .form-btn {
+            margin-top: 24px;
+            padding: 0;
+            background: none;
+            border: none;
+            color: var(--burgundy);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            position: relative;
+        }
+
+        .form-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--burgundy);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .form-btn:hover::after {
+            transform: scaleX(1);
+        }
+
+        .form-btn:hover {
+            opacity: 0.8;
+        }
+
+        .hero-note {
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 0.7rem;
+            margin-top: 20px;
+            animation: appear 0.8s ease 0.8s both;
+        }
+
+        .footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 40px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .footer-copy {
+            color: rgba(255, 255, 255, 0.12);
+            font-size: 0.7rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: var(--burgundy);
+            text-decoration: none;
+            font-size: 0.7rem;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+
+        .form-success {
+            display: none;
+            color: var(--burgundy);
+            font-size: 0.9rem;
+            padding: 14px 0;
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 100px 20px 60px;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>شَفرة — قريبًا</h1>
+
+    <section class="hero">
+        <h1 class="hero-title">نشرة شفرة</h1>
+        <p class="hero-desc">نشرة أسبوعية تفكّك الأفكار التي تشكّلنا<br>من علم النفس إلى التكنولوجيا إلى الفلسفة</p>
+        <div class="hero-form">
+            <form id="form1">
+                <input class="form-input" type="email" id="email1" placeholder="بريدك الإلكتروني" required>
+                <button class="form-btn" type="submit">اشترك</button>
+            </form>
+            <div class="form-success" id="success1">✓ تم الاشتراك</div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <span class="footer-copy">© شَفرة 2026 — جميع الحقوق محفوظة</span>
+        <div class="footer-links">
+            <a href="https://x.com/shafrh9" target="_blank">X</a>
+            <a href="https://instagram.com/shafrh9" target="_blank">Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        const f = document.getElementById('form1');
+        const e = document.getElementById('email1');
+        const s = document.getElementById('success1');
+        f.addEventListener('submit', async ev => {
+            ev.preventDefault();
+            const v = e.value.trim();
+            if (!v) return;
+            const b = f.querySelector('button');
+            b.textContent = '...';
+            b.disabled = true;
+            try {
+                await fetch('https://subscribe-forms.beehiiv.com/4ce85085-29c4-4b27-9e70-3f9f1efcc2aa', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: 'email=' + encodeURIComponent(v),
+                    mode: 'no-cors'
+                });
+                f.style.display = 'none';
+                s.style.display = 'block';
+            } catch {
+                window.open('https://subscribe-forms.beehiiv.com/4ce85085-29c4-4b27-9e70-3f9f1efcc2aa?email=' + encodeURIComponent(v), '_blank');
+                b.textContent = 'اشترك';
+                b.disabled = false;
+            }
+        });
+    </script>
 </body>
 
 </html>
