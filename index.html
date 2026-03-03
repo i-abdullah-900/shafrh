@@ -78,23 +78,72 @@
             color: rgba(255, 255, 255, 0.4);
             font-size: 1.1rem;
             line-height: 2;
-            margin: 24px auto 40px;
+            margin: 24px auto 48px;
             animation: appear 0.8s ease 0.4s both;
         }
 
-        .hero-embed {
+        .hero-form {
             animation: appear 0.8s ease 0.6s both;
             width: 100%;
-            max-width: 480px;
-            display: flex;
-            justify-content: center;
+            max-width: 380px;
+            text-align: center;
         }
 
-        .hero-embed iframe {
+        .form-input {
             width: 100%;
-            height: 125px;
-            border: none;
+            padding: 14px 0;
             background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .form-input:focus {
+            border-color: var(--burgundy);
+        }
+
+        .form-btn {
+            margin-top: 24px;
+            padding: 0;
+            background: none;
+            border: none;
+            color: var(--burgundy);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            position: relative;
+        }
+
+        .form-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--burgundy);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .form-btn:hover::after {
+            transform: scaleX(1);
+        }
+
+        .form-btn:hover {
+            opacity: 0.8;
         }
 
         .footer {
@@ -128,6 +177,13 @@
             opacity: 0.7;
         }
 
+        .form-success {
+            display: none;
+            color: var(--burgundy);
+            font-size: 0.9rem;
+            padding: 14px 0;
+        }
+
         @media (max-width: 600px) {
             .hero {
                 padding: 100px 20px 60px;
@@ -147,9 +203,12 @@
     <section class="hero">
         <h1 class="hero-title">نشرة شفرة</h1>
         <p class="hero-desc">نشرة تهتم بتفكيك فكرة، تعزيز وعي، واكتشاف نمط</p>
-        <div class="hero-embed">
-            <iframe src="https://subscribe-forms.beehiiv.com/4ce85085-29c4-4b27-9e70-3f9f1efcc2aa"
-                frameborder="0" scrolling="no"></iframe>
+        <div class="hero-form">
+            <form id="form1">
+                <input class="form-input" type="email" id="email1" placeholder="بريدك الإلكتروني" required>
+                <button class="form-btn" type="submit">اشترك</button>
+            </form>
+            <div class="form-success" id="success1">✓ تم الاشتراك</div>
         </div>
     </section>
 
@@ -161,6 +220,33 @@
         </div>
     </footer>
 
+    <script>
+        const f = document.getElementById('form1');
+        const e = document.getElementById('email1');
+        const s = document.getElementById('success1');
+        f.addEventListener('submit', async ev => {
+            ev.preventDefault();
+            const v = e.value.trim();
+            if (!v) return;
+            const b = f.querySelector('button');
+            b.textContent = '...';
+            b.disabled = true;
+            try {
+                await fetch('https://subscribe-forms.beehiiv.com/4ce85085-29c4-4b27-9e70-3f9f1efcc2aa', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: 'email=' + encodeURIComponent(v),
+                    mode: 'no-cors'
+                });
+                f.style.display = 'none';
+                s.style.display = 'block';
+            } catch {
+                window.open('https://subscribe-forms.beehiiv.com/4ce85085-29c4-4b27-9e70-3f9f1efcc2aa?email=' + encodeURIComponent(v), '_blank');
+                b.textContent = 'اشترك';
+                b.disabled = false;
+            }
+        });
+    </script>
 </body>
 
 </html>
