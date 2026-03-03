@@ -130,6 +130,13 @@
         .form-btn:hover::after { transform: scaleX(1); }
         .form-btn:hover { opacity: 0.8; }
 
+        .form-success {
+            display: none;
+            color: var(--burgundy);
+            font-size: 0.9rem;
+            padding: 14px 0;
+        }
+
         .footer {
             border-top: 1px solid rgba(255, 255, 255, 0.04);
             padding: 40px 24px;
@@ -172,11 +179,15 @@
         <h1 class="hero-title">نشرة شفرة</h1>
         <p class="hero-desc">نشرة تهتم بتفكيك فكرة، تعزيز وعي، واكتشاف نمط</p>
         <div class="hero-form">
-            <form id="form1">
-                <input class="form-input" type="email" id="email1" placeholder="بريدك الإلكتروني" required>
+            <form id="form1"
+                  action="https://subscribe-forms.beehiiv.com/4ce85085-29c4-4b27-9e70-3f9f1efcc2aa"
+                  method="POST"
+                  target="beehiiv-frame">
+                <input class="form-input" type="email" name="email" id="email1" placeholder="بريدك الإلكتروني" required>
                 <br>
                 <button class="form-btn" type="submit">اشترك</button>
             </form>
+            <div class="form-success" id="success1">✓ تم الاشتراك</div>
         </div>
     </section>
 
@@ -188,15 +199,20 @@
         </div>
     </footer>
 
+    <!-- Hidden iframe receives form submission -->
+    <iframe name="beehiiv-frame" style="display:none"></iframe>
+
     <script>
-        document.getElementById('form1').addEventListener('submit', function(e) {
-            e.preventDefault();
-            var email = document.getElementById('email1').value.trim();
-            if (!email) return;
-            window.open(
-                'https://subscribe-forms.beehiiv.com/4ce85085-29c4-4b27-9e70-3f9f1efcc2aa?email=' + encodeURIComponent(email),
-                '_blank'
-            );
+        document.getElementById('form1').addEventListener('submit', function() {
+            var form = this;
+            var btn = form.querySelector('button');
+            btn.textContent = '...';
+            btn.disabled = true;
+
+            setTimeout(function() {
+                form.style.display = 'none';
+                document.getElementById('success1').style.display = 'block';
+            }, 1500);
         });
     </script>
 </body>
