@@ -43,15 +43,8 @@
         }
 
         @keyframes appear {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero {
@@ -101,15 +94,11 @@
             text-align: center;
             outline: none;
             transition: border-color 0.3s;
+            border-radius: 0;
         }
 
-        .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.2);
-        }
-
-        .form-input:focus {
-            border-color: var(--burgundy);
-        }
+        .form-input::placeholder { color: rgba(255, 255, 255, 0.2); }
+        .form-input:focus { border-color: var(--burgundy); }
 
         .form-btn {
             margin-top: 24px;
@@ -138,13 +127,8 @@
             transition: transform 0.3s ease;
         }
 
-        .form-btn:hover::after {
-            transform: scaleX(1);
-        }
-
-        .form-btn:hover {
-            opacity: 0.8;
-        }
+        .form-btn:hover::after { transform: scaleX(1); }
+        .form-btn:hover { opacity: 0.8; }
 
         .footer {
             border-top: 1px solid rgba(255, 255, 255, 0.04);
@@ -173,27 +157,11 @@
             transition: opacity 0.3s;
         }
 
-        .footer-links a:hover {
-            opacity: 0.7;
-        }
-
-        .form-success {
-            display: none;
-            color: var(--burgundy);
-            font-size: 0.9rem;
-            padding: 14px 0;
-        }
+        .footer-links a:hover { opacity: 0.7; }
 
         @media (max-width: 600px) {
-            .hero {
-                padding: 100px 20px 60px;
-            }
-
-            .footer {
-                flex-direction: column;
-                gap: 16px;
-                text-align: center;
-            }
+            .hero { padding: 100px 20px 60px; }
+            .footer { flex-direction: column; gap: 16px; text-align: center; }
         }
     </style>
 </head>
@@ -206,9 +174,9 @@
         <div class="hero-form">
             <form id="form1">
                 <input class="form-input" type="email" id="email1" placeholder="بريدك الإلكتروني" required>
+                <br>
                 <button class="form-btn" type="submit">اشترك</button>
             </form>
-            <div class="form-success" id="success1">✓ تم الاشتراك</div>
         </div>
     </section>
 
@@ -221,30 +189,14 @@
     </footer>
 
     <script>
-        const f = document.getElementById('form1');
-        const e = document.getElementById('email1');
-        const s = document.getElementById('success1');
-        f.addEventListener('submit', async ev => {
-            ev.preventDefault();
-            const v = e.value.trim();
-            if (!v) return;
-            const b = f.querySelector('button');
-            b.textContent = '...';
-            b.disabled = true;
-            try {
-                await fetch('https://subscribe-forms.beehiiv.com/4ce85085-29c4-4b27-9e70-3f9f1efcc2aa', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: 'email=' + encodeURIComponent(v),
-                    mode: 'no-cors'
-                });
-                f.style.display = 'none';
-                s.style.display = 'block';
-            } catch {
-                window.open('https://subscribe-forms.beehiiv.com/4ce85085-29c4-4b27-9e70-3f9f1efcc2aa?email=' + encodeURIComponent(v), '_blank');
-                b.textContent = 'اشترك';
-                b.disabled = false;
-            }
+        document.getElementById('form1').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var email = document.getElementById('email1').value.trim();
+            if (!email) return;
+            window.open(
+                'https://subscribe-forms.beehiiv.com/4ce85085-29c4-4b27-9e70-3f9f1efcc2aa?email=' + encodeURIComponent(email),
+                '_blank'
+            );
         });
     </script>
 </body>
