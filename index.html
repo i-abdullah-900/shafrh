@@ -18,12 +18,52 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap"
         rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'YearOfHandicrafts';
+            src: url('./assets/Font/OTF/TheYearofHandicrafts-Regular.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'YearOfHandicrafts';
+            src: url('./assets/Font/OTF/TheYearofHandicrafts-Medium.otf') format('opentype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'YearOfHandicrafts';
+            src: url('./assets/Font/OTF/TheYearofHandicrafts-SemiBold.otf') format('opentype');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'YearOfHandicrafts';
+            src: url('./assets/Font/OTF/TheYearofHandicrafts-Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'YearOfHandicrafts';
+            src: url('./assets/Font/OTF/TheYearofHandicrafts-Black.otf') format('opentype');
+            font-weight: 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
         :root {
             --black: #000000;
             --burgundy: #733034;
             --text-light: #FFFFFF;
-            --font-display: 'Amiri', 'Noto Naskh Arabic', Georgia, serif;
-            --font-body: 'Noto Naskh Arabic', Georgia, serif;
+            --font-display: 'YearOfHandicrafts', 'Amiri', 'Noto Naskh Arabic', Georgia, serif;
+            --font-body: 'YearOfHandicrafts', 'Noto Naskh Arabic', Georgia, serif;
         }
 
         *,
@@ -165,7 +205,7 @@
         }
 
         .footer-copy {
-            color: rgba(255, 255, 255, 0.12);
+            color: var(--burgundy);
             font-size: 0.7rem;
         }
 
